@@ -1,11 +1,12 @@
-import React from 'react';
-
+import React,{useContext} from 'react';
+import { GlobalContext } from '../context/GlobalState';
 const ExpenseTransactions = ({expenseTransaction}) => {
+    const {deleteTransaction} = useContext(GlobalContext)
     return (
         <li className="transaction">
         <span className="transaction-text">{expenseTransaction.expenseText}</span>
         <span className="transaction-anmount">{expenseTransaction.expenseAmount}</span>
-        <button className="delete-btn">
+        <button className="delete-btn" onClick={()=> deleteTransaction(expenseTransaction.id)}>
          <i className="fas fa-trash"></i>
         </button>
     </li>
